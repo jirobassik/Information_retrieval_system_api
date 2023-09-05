@@ -18,7 +18,16 @@ from django.contrib import admin
 from django.urls import path
 from search.views import SearchAPIView
 
+from rest_framework import routers
+from file_upload.views import UploadedFileViewSet, DownloadFileViewSet
+
+router = routers.DefaultRouter()
+router.register(r'api/v1/uploadfiles', UploadedFileViewSet)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/search', SearchAPIView.as_view())
+    path('api/v1/search/', SearchAPIView.as_view()),
+    path('api/v1/download/<int:id>', DownloadFileViewSet.as_view())
 ]
+
+urlpatterns += router.urls
