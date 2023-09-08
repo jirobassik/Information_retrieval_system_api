@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'search',
     'file_upload',
+    'text_classification',
 ]
 
 MIDDLEWARE = [

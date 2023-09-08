@@ -1,13 +1,10 @@
 import mimetypes
 import os
 
-from django.core.files.uploadedfile import UploadedFile
 from django.http import HttpResponse
 from rest_framework import viewsets, views
 from .models import FileModel
 from .serializers import UploadedFileSerializer
-from rest_framework.response import Response
-from pathlib import Path
 
 
 class UploadedFileViewSet(viewsets.ModelViewSet):
