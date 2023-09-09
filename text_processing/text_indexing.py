@@ -10,10 +10,10 @@ class TextsIndexing:
     def __init__(self, *args):
         self.__filenames = args
         self.__dict_filenames = {}
+        self.create_dict_texts()
 
     def create_dict_texts(self):
         for filename in self.filenames:
-            # print('preprocess text', self.preprocess_text(self.reading_file(filename)))
             self.__dict_filenames[filename] = self.preprocess_text(self.reading_file(filename))
 
     def preprocess_text(self, text_input: str):
@@ -25,7 +25,6 @@ class TextsIndexing:
         return Path("media", filename).read_text()
 
     def index_words(self):
-        self.create_dict_texts()
         dict_index_words = {}
         for filename, list_words in self.dict_filenames.items():
             for index, word in enumerate(list_words):
