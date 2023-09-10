@@ -8,7 +8,7 @@ from .serializers import UploadedFileSerializer
 
 
 class UploadedFileViewSet(viewsets.ModelViewSet):
-    queryset = FileModel.objects.all()
+    queryset = FileModel.objects.order_by('upload_file')
     serializer_class = UploadedFileSerializer
 
 
