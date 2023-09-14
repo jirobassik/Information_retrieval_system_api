@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'search',
     'file_upload',
     'text_classification',
+    'metrics',
 ]
 
 MIDDLEWARE = [

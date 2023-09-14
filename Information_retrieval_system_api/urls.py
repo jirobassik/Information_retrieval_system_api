@@ -21,6 +21,7 @@ from search.views import SearchAPIView
 from rest_framework import routers
 from file_upload.views import UploadedFileViewSet, DownloadFileViewSet
 from text_classification.views import ClassificationAPIView
+from metrics.views import MetricsAPIView
 
 router = routers.DefaultRouter()
 router.register(r'api/v1/uploadfiles', UploadedFileViewSet)
@@ -28,8 +29,9 @@ router.register(r'api/v1/uploadfiles', UploadedFileViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/search/', SearchAPIView.as_view()),
+    path('api/v1/metric/', MetricsAPIView.as_view()),
     path('api/v1/download/<int:id>', DownloadFileViewSet.as_view()),
-    path('api/v1/classification/<int:id>', ClassificationAPIView.as_view())
+    path('api/v1/classification/<int:id>', ClassificationAPIView.as_view()),
 ]
 
 urlpatterns += router.urls
