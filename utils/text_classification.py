@@ -7,7 +7,7 @@ def text_classification(text: str) -> dict:
     # You can choose different models, like 'facebook/bart-large-mnli' or 'roberta-large-mnli'
     classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
     class_descriptions = ["politics", "sports", "technology", "games", "medicine", "programming", "education",
-                          "environment"]
+                          "environment", "food"]
     result = classifier(text, class_descriptions, device=device)
     for label, score in zip(result["labels"], result["scores"]):
         print(f"{label}: {score:.3f}")

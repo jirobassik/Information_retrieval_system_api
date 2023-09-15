@@ -38,7 +38,7 @@ class Metrics:
         return (self.recall() + self.precision() + self.accuracy() + self.error() + self.fmeasure()) / 5
 
     def precision_n(self):
-        return round(self.precision() / len(self.all_files), 1)
+        return (self.a + self.c) / (self.a + self.b)
 
     def __call__(self):
         return {'recall': self.recall(), 'precision': self.precision(), 'accuracy': self.accuracy(),
