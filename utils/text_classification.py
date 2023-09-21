@@ -2,7 +2,7 @@ import torch
 from transformers import pipeline
 
 
-def text_classification(text: str) -> dict:
+def text_classification(text: str) -> list:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     # You can choose different models, like 'facebook/bart-large-mnli' or 'roberta-large-mnli'
     classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")

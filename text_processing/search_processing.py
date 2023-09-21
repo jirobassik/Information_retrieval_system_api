@@ -23,6 +23,7 @@ class SearchProcessingRank(TextsIndexing):
     def __call__(self):
         corpus = list(self.dict_filenames.values())
         bm25 = BM25Okapi(corpus)
-        doc_scores = bm25.get_scores(self.preprocess_text(self.query))
+        preprocess_query = self.preprocess_text(self.query)
+        doc_scores = bm25.get_scores(preprocess_query)
         dict_filenames_index = dict(zip(self.dict_filenames.keys(), doc_scores))
-        return {self.query: [filename for filename, index in dict_filenames_index.items() if index >= 0.10]}
+        return {" ".join(preprocess_query): [filename for filename, index in dict_filenames_index.items() if index >= 0.10]}

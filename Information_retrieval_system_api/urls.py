@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from search.views import SearchAPIView
 
 from rest_framework import routers
@@ -23,7 +23,7 @@ from file_upload.views import UploadedFileViewSet, DownloadFileViewSet
 from text_classification.views import ClassificationAPIView
 from metrics.views import MetricsAPIView
 
-router = routers.DefaultRouter()
+router = routers.SimpleRouter()
 router.register(r'api/v1/uploadfiles', UploadedFileViewSet)
 
 urlpatterns = [
@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/v1/metric/', MetricsAPIView.as_view()),
     path('api/v1/download/<int:id>', DownloadFileViewSet.as_view()),
     path('api/v1/classification/<int:id>', ClassificationAPIView.as_view()),
+    path('', include(router.urls)),
 ]
 
 urlpatterns += router.urls
